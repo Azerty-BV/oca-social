@@ -44,7 +44,8 @@ class MailRenderMixin(models.AbstractModel):
                     # anchor <a href odoo has a parent powered by that must be removed
                     parent.getparent().remove(parent)
                 else:
-                    if parent.tag == "td":  # also here can be powered by
+                    # also here can be powered by
+                    if parent.tag == "td" and parent.getparent():
                         parent.getparent().remove(parent)
                     else:
                         parent.remove(elem)
@@ -63,7 +64,7 @@ class MailRenderMixin(models.AbstractModel):
         template_src,
         model,
         res_ids,
-        engine="qweb_view",
+        engine="inline_template",
         add_context=None,
         options=None,
         post_process=False,
@@ -78,7 +79,7 @@ class MailRenderMixin(models.AbstractModel):
           this could be cleaned but hey, we are in a rush
         :param str model: model name of records on which we want to perform rendering
         :param list res_ids: list of ids of records (all belonging to same model)
-        :param string engine: jinja
+        :param string engine: inline_template, qweb or qweb_view;
         :param post_process: perform rendered str / html post processing (see
           ``_render_template_postprocess``)
 
@@ -106,7 +107,7 @@ class MailRenderMixin(models.AbstractModel):
         if isinstance(message, Markup):
             wrapper = Markup
 
-        message =  re.sub(
+        message = re.sub(
             r"""(Powered by\s(.*)Odoo</a>)""", "<div>&nbsp;</div>", message
         )
 

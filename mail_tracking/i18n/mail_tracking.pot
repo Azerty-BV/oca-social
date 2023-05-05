@@ -245,12 +245,16 @@ msgstr ""
 
 #. module: mail_tracking
 #: model:ir.model.fields,field_description:mail_tracking.field_calendar_event__failed_message_ids
+#: model:ir.model.fields,field_description:mail_tracking.field_event_event__failed_message_ids
+#: model:ir.model.fields,field_description:mail_tracking.field_event_registration__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_blacklist__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_channel__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_thread__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_thread_blacklist__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_thread_cc__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_thread_phone__failed_message_ids
+#: model:ir.model.fields,field_description:mail_tracking.field_mailing_contact__failed_message_ids
+#: model:ir.model.fields,field_description:mail_tracking.field_mailing_mailing__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_phone_blacklist__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_res_partner__failed_message_ids
 #: model:ir.model.fields,field_description:mail_tracking.field_res_users__failed_message_ids
@@ -392,6 +396,7 @@ msgstr ""
 #. module: mail_tracking
 #: model:ir.model,name:mail_tracking.model_mail_message
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_email__mail_message_id
+#: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_email__message_id
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_event__tracking_email_id
 #: model_terms:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_event_search
 msgid "Message"
@@ -471,6 +476,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_email__recipient_address
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_event__recipient_address
 msgid "Recipient email address"
+msgstr ""
+
+#. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_tracking_email.py:0
+#, python-format
+msgid "Records:"
 msgstr ""
 
 #. module: mail_tracking
@@ -580,6 +591,15 @@ msgid "The partner doesn't have a defined email"
 msgstr ""
 
 #. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_tracking_email.py:0
+#, python-format
+msgid ""
+"The requested operation cannot be completed due to security restrictions. Please contact your system administrator.\n"
+"\n"
+"(Document type: %(desc)s, Operation: %(operation)s)"
+msgstr ""
+
+#. module: mail_tracking
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_email__time
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_event__time
 #: model_terms:ir.ui.view,arch_db:mail_tracking.view_mail_tracking_email_search
@@ -682,6 +702,12 @@ msgstr ""
 #. module: mail_tracking
 #: model:ir.model.fields,field_description:mail_tracking.field_mail_tracking_event__user_country_id
 msgid "User country"
+msgstr ""
+
+#. module: mail_tracking
+#: code:addons/mail_tracking/models/mail_tracking_email.py:0
+#, python-format
+msgid "User:"
 msgstr ""
 
 #. module: mail_tracking
