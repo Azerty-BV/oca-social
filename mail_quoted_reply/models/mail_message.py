@@ -52,6 +52,7 @@ class MailMessage(models.Model):
             "is_log": False,
             "is_quoted_reply": True,
             "default_notify": True,
+            "default_email_add_signature": False,
             "force_email": True,
             "default_partner_ids": self._default_reply_partner(),
         }
