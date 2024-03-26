@@ -59,7 +59,8 @@ class MailMessage(models.Model):
 
         # If the original message had a subject, we use it as a base for the
         # new subject, adding a "Re:" at the beginning.
-        if self.subject:
+
+        if self.subject and not self.subject.startswith('Re:') :
             action["context"]["default_subject"] = f"Re: {self.subject}"
 
         return action
