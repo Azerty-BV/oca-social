@@ -17,8 +17,9 @@ class MailMessage(models.Model):
             {signature}
             <br />
             <br />
-            <blockquote style="padding-right:0px; padding-left:5px; border-left-color: #000;
-            margin-left:5px; margin-right:0px;border-left-width: 2px; border-left-style:solid">
+            <blockquote style="padding-right:0px; padding-left:5px;
+            border-left-color: #000; margin-left:5px; margin-right:0px;
+            border-left-width: 2px; border-left-style:solid">
             {str_from}: {email_from}<br/>
             {str_date}: {date}<br/>
             {str_subject}: {subject}<br/>
@@ -45,22 +46,20 @@ class MailMessage(models.Model):
         )
         action["context"] = {
             "default_model": self.model,
-            "default_res_id": self.res_id,
+            "default_res_ids": [self.res_id],
             "default_composition_mode": "comment",
             "quote_body": self._prep_quoted_reply_body(),
             "default_is_log": False,
             "is_log": False,
             "is_quoted_reply": True,
             "default_notify": True,
-            "default_email_add_signature": False,
             "force_email": True,
             "default_partner_ids": self._default_reply_partner(),
         }
 
         # If the original message had a subject, we use it as a base for the
         # new subject, adding a "Re:" at the beginning.
-
-        if self.subject and not self.subject.startswith('Re:') :
+        if self.subject:
             action["context"]["default_subject"] = f"Re: {self.subject}"
 
         return action
