@@ -37,7 +37,7 @@ class MailMessage(models.Model):
         )
 
     def _default_reply_partner(self):
-        return self.env["res.partner"].find_or_create(self.email_from).ids
+        return self.author_id.id or self.env["res.partner"].find_or_create(self.email_from).ids
 
     def reply_message(self):
         action = self.env["ir.actions.actions"]._for_xml_id(
